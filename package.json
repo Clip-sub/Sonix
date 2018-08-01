@@ -1,0 +1,57 @@
+{
+  "name": "Sonix",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "checkdeps": "ncu --packageFile package.json",
+    "i5s": "react-native run-ios --simulator=\"iPhone 5s\"",
+    "i6": "react-native run-ios --simulator=\"iPhone 6\"",
+    "a": "react-native run-android",
+    "ar": "react-native run-android --variant=\"release\"",
+    "fixcode": "standard --fix",
+    "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
+    "postinstall": "sh ./scripts/post-install.sh",
+    "precommit": "lint-staged && npm run lint",
+    "prepush": "npm run git-hook && npm run fixcode",
+    "lint": "standard --verbose | snazzy",
+    "git-hook": "npm run lint -s"
+  },
+  "dependencies": {
+    "formik": "^1.0.2",
+    "glamorous-native": "^1.4.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
+    "react-native-navigation": "^2.0.2439"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-flow": "^7.0.0-beta.54",
+    "@babel/preset-react": "^7.0.0-beta.54",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "23.4.2",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "babel-preset-react-native": "^5",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "jest": "23.4.2",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.0",
+    "prop-types": "^15.6.2",
+    "react-test-renderer": "16.4.1",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
+  }
+}
