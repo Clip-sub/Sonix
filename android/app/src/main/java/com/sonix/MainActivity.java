@@ -1,15 +1,20 @@
 package com.sonix;
 
-import com.facebook.react.ReactActivity;
+import com.reactnativenavigation.NavigationActivity;
+import android.content.Intent;
 
-public class MainActivity extends ReactActivity {
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.ReactRootView;
 
-    /**
-     * Returns the name of the main component registered from JavaScript.
-     * This is used to schedule rendering of the component.
-     */
+public class MainActivity extends NavigationActivity {
     @Override
-    protected String getMainComponentName() {
-        return "Sonix";
+    public void onWindowFocusChanged(boolean hasFocus) {
+        dismissSystemAlertsToPreventDetoxFromTimingOut(hasFocus);
+    }
+
+    private void dismissSystemAlertsToPreventDetoxFromTimingOut(boolean hasFocus) {
+        if (!hasFocus) {
+            sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        }
     }
 }

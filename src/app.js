@@ -3,67 +3,69 @@
  * @flow
  */
 import { Navigation } from 'react-native-navigation'
-import { registerScreens } from './screens/_registry'
+import { registerTabs } from './tabs/_tab-registry'
 
-registerScreens()
+registerTabs()
 
-Navigation.setRoot({
-  root: {
-    bottomTabs: {
-      children: [
-        {
-          component: {
-            name: 'tab.Feed',
-            passProps: {
-              text: 'This is tab 2'
-            },
-            options: {
-              bottomTab: {
-                text: 'Tab 2',
-                icon: require('../images/two.png'),
-                testID: 'SECOND_TAB_BAR_BUTTON'
+export function start (iconAssets) {
+  Navigation.setRoot({
+    root: {
+      bottomTabs: {
+        children: [
+          {
+            component: {
+              name: 'tab.Feed',
+              passProps: {
+                text: 'This is tab 2'
+              },
+              options: {
+                bottomTab: {
+                  text: 'Tab 2',
+                  icon: iconAssets[0],
+                  testID: 'SECOND_TAB_BAR_BUTTON'
+                }
+              }
+            }
+          },
+          {
+            component: {
+              name: 'tab.Categories',
+              passProps: {
+                text: 'This is tab 2'
+              },
+              options: {
+                bottomTab: {
+                  text: 'Tab 2',
+                  icon: iconAssets[1],
+                  testID: 'SECOND_TAB_BAR_BUTTON'
+                }
+              }
+            }
+          },
+          {
+            component: {
+              name: 'tab.Comments',
+              passProps: {
+                text: 'This is tab 2'
+              },
+              options: {
+                bottomTab: {
+                  text: 'Tab 2',
+                  icon: iconAssets[2],
+                  testID: 'SECOND_TAB_BAR_BUTTON'
+                }
               }
             }
           }
-        },
-        {
-          component: {
-            name: 'tab.Categogies',
-            passProps: {
-              text: 'This is tab 2'
-            },
-            options: {
-              bottomTab: {
-                text: 'Tab 2',
-                icon: require('../images/two.png'),
-                testID: 'SECOND_TAB_BAR_BUTTON'
-              }
-            }
-          }
-        },
-        {
-          component: {
-            name: 'tab.Comments',
-            passProps: {
-              text: 'This is tab 2'
-            },
-            options: {
-              bottomTab: {
-                text: 'Tab 2',
-                icon: require('../images/two.png'),
-                testID: 'SECOND_TAB_BAR_BUTTON'
-              }
-            }
-          }
+        ]
+      },
+      component: {
+        name: 'screen.PostContent',
+        options: {},
+        passProps: {
+          text: 'This is Post Content'
         }
-      ]
-    },
-    component: {
-      name: 'screen.PostContent',
-      options: {},
-      passProps: {
-        text: 'This is Post Content'
       }
     }
-  }
-})
+  })
+}

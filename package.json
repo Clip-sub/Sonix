@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "startrs": "npm start -- --reset-cache",
     "test": "jest",
     "checkdeps": "ncu --packageFile package.json",
     "i5s": "react-native run-ios --simulator=\"iPhone 5s\"",
@@ -20,6 +21,7 @@
     "git-hook": "npm run lint -s"
   },
   "dependencies": {
+    "dayjs": "^1.7.4",
     "formik": "^1.0.2",
     "glamorous-native": "^1.4.0",
     "lodash": "^4.17.10",

@@ -1,7 +1,10 @@
 /** @format */
+import { Navigation } from 'react-native-navigation'
+import { start } from './src/app'
+import { loadIconAssets } from './src/asset-loader'
 
-import {AppRegistry} from 'react-native'
-import App from './src/app'
-import {name as appName} from './app.json'
-
-AppRegistry.registerComponent(appName, () => App)
+Navigation.events().registerAppLaunchedListener(() => {
+  loadIconAssets()
+    .then(assets => start(assets))
+    .catch(e => console.log(e))
+})
