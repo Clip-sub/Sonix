@@ -23,10 +23,11 @@
     "formik": "^1.0.2",
     "glamorous-native": "^1.4.0",
     "lodash": "^4.17.10",
-    "moment": "^2.22.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
-    "react-native-navigation": "^2.0.2439"
+    "react-native-i18n": "1.0.0",
+    "react-native-navigation": "^2.0.2439",
+    "react-native-vector-icons": "^5.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.0.0-beta.54",
