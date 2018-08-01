@@ -1,0 +1,5 @@
+{
+  "name": "sonix-common",
+  "private": true,
+  "main": "index.js"
+}

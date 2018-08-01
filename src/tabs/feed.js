@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { ItemPost } from '../components/feed/item-post'
 
 export class Feed extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text>MyClass</Text>
+        <ItemPost />
       </View>
     )
   }
