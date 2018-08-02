@@ -9,7 +9,7 @@ export class Feed extends Component {
     return {
       topBar: {
         title: {
-          text: 'My Screen'
+          text: 'SonixGVM'
         },
         visible: true,
         animate: true,
@@ -33,6 +33,7 @@ export class Feed extends Component {
   loadData (page: number) {
     apiPost.getLatestPosts()
       .then(resp => {
+        console.log(resp)
         resp.length > 1 && this.posts++
 
         if (page === 1) {
@@ -53,7 +54,7 @@ export class Feed extends Component {
         numColumns={2}
         keyExtractor={item => String(Math.random())}
         contentContainerStyle={styles.container}
-        renderItem={({ item }) => <ItemPost />} />
+        renderItem={({ item }) => <ItemPost imageUrl={item._embedded['wp:featuredmedia'][0].source_url} title={item.title.rendered} date={item.date} />} />
     )
   }
 }
