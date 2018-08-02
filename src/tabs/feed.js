@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, FlatList } from 'react-native'
 import { Colors } from 'sonix-common'
 import { ItemPost } from '../components/feed/item-post'
+import { apiPost } from '../api/api-post'
 
 export class Feed extends Component {
   static get options () {
@@ -19,10 +20,36 @@ export class Feed extends Component {
     }
   }
 
+  constructor (props) {
+    super(props)
+    this.page = 1
+    this.posts = []
+  }
+
+  componentDidMount () {
+    this.loadData(this.page)
+  }
+
+  loadData (page: number) {
+    apiPost.getLatestPosts()
+      .then(resp => {
+        resp.length > 1 && this.posts++
+
+        if (page === 1) {
+          this.posts = resp
+        } else {
+          this.posts = this.posts.concat(resp)
+        }
+
+        this.forceUpdate()
+      })
+      .catch(e => console.log(e))
+  }
+
   render () {
     return (
       <FlatList
-        data={[1, 1, 1, 1, 1, 1, 1, 1]}
+        data={this.posts}
         numColumns={2}
         keyExtractor={item => String(Math.random())}
         contentContainerStyle={styles.container}

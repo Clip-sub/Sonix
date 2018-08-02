@@ -1,3 +1,14 @@
+/**
+ * Unrestrict XHR:
+ */
+/* if (__DEV__) {
+  GLOBAL.XMLHttpRequest =
+    GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
+} */
+
+import _ from 'lodash'
+import qs from 'querystringify'
+
 const DEFAULT_HEADERS = {
   'Cache-Control': 'no-cache'
 }
@@ -14,7 +25,34 @@ const api = {
       }
     }
 
-    return fetch(baseUrl + endpoint, options).then(result => result.json())
+    const qsParams = qs.stringify({...params, _embed: true}, true)
+
+    return fetch(baseUrl + endpoint + '/' + qsParams, options).then(result => {
+      console.log(result)
+      return result.json()
+    })
+  },
+
+  postFormData: (endpoint: string, params: Object): Promise => {
+    let formData = new FormData()
+    _.forIn(params, (value, key) => {
+      if (value !== null && value !== undefined) {
+        formData.append(key, value)
+      }
+    })
+
+    const options = {
+      method: 'POST',
+      body: formData,
+      headers: {
+        ...DEFAULT_HEADERS,
+        Accept: 'multipart/form-data'
+      }
+    }
+
+    return fetch(baseUrl + endpoint, options).then(result => {
+      return result.json()
+    })
   }
 }
 

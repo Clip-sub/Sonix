@@ -7,10 +7,6 @@ class ItemPost extends Component {
     title: 'Title'
   }
 
-  componentDidMount () {
-
-  }
-
   render () {
     const { title } = this.props
 
