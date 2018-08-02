@@ -5,9 +5,9 @@ import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.SyncUiImplementation;
 
 import com.facebook.react.uimanager.UIImplementationProvider;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.i18n.reactnativei18n.ReactNativeI18n;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -26,6 +26,7 @@ public class MainApplication extends NavigationApplication {
   public List<ReactPackage> createAdditionalReactPackages() {
     return Arrays.<ReactPackage>asList(
       new MainReactPackage(),
+      new RNI18nPackage(),
       new ReactNativeI18n(),
       new VectorIconsPackage()
     );

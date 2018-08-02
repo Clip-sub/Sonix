@@ -151,8 +151,8 @@ configurations.all {
 }
 
 dependencies {
+    compile project(':react-native-i18n')
     implementation project(':react-native-vector-icons')
-    implementation project(':react-native-i18n')
     implementation project(':react-native-navigation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
