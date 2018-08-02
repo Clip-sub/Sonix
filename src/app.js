@@ -4,25 +4,40 @@
  */
 import { Navigation } from 'react-native-navigation'
 import { registerTabs } from './tabs/_tab-registry'
-
-registerTabs()
+import { registerHeaders } from './components/header/_header-registry'
 
 export function start (iconAssets) {
+  registerTabs()
+  registerHeaders()
+
   Navigation.setRoot({
     root: {
       bottomTabs: {
+        animations: {
+          enable: true
+        },
         children: [
           {
-            component: {
-              name: 'tab.Feed',
-              passProps: {
-                text: ''
-              },
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: 'tab.Feed',
+                    passProps: {
+                      text: 'This is tab 1'
+                    }
+                  }
+                }
+              ],
               options: {
                 bottomTab: {
-                  text: 'Feed',
+                  text: 'Home',
                   icon: iconAssets[0],
-                  testID: 'SECOND_TAB_BAR_BUTTON'
+                  testID: 'FIRST_TAB_BAR_BUTTON',
+                  iconColor: 'gray',
+                  selectedIconColor: '#d6ba12',
+                  textColor: 'gray',
+                  selectedTextColor: '#d6ba12'
                 }
               }
             }
