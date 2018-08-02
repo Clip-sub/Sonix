@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, FlatList } from 'react-native'
-import { Colors } from 'sonix-common'
+import { Colors, NavigationHelper } from 'sonix-common'
 import { ItemPost } from '../components/feed/item-post'
 import { apiPost } from '../api/api-post'
 
@@ -9,10 +9,13 @@ export class Feed extends Component {
     return {
       topBar: {
         title: {
-          text: 'SonixGVM'
+          text: 'Back Handler',
+          color: 'black',
+          fontSize: 16
         },
-        visible: true,
-        animate: true,
+        subtitle: {
+          text: 'fd'
+        },
         background: {
           color: Colors.ORANGE
         }
@@ -22,6 +25,7 @@ export class Feed extends Component {
 
   constructor (props) {
     super(props)
+    console.log(props)
     this.page = 1
     this.posts = []
   }
@@ -47,6 +51,24 @@ export class Feed extends Component {
       .catch(e => console.log(e))
   }
 
+  toPostContent () {
+    NavigationHelper.push('mainBottomTabs', {
+      component: {
+        name: 'screen.PostContent',
+        passProps: {
+          text: 'Pushed screen'
+        },
+        options: {
+          topBar: {
+            title: {
+              text: 'Pushed screen title'
+            }
+          }
+        }
+      }
+    })
+  }
+
   render () {
     return (
       <FlatList
@@ -54,7 +76,12 @@ export class Feed extends Component {
         numColumns={2}
         keyExtractor={item => String(Math.random())}
         contentContainerStyle={styles.container}
-        renderItem={({ item }) => <ItemPost imageUrl={item._embedded['wp:featuredmedia'][0].source_url} title={item.title.rendered} date={item.date} />} />
+        renderItem={({ item }) =>
+          <ItemPost
+            onPress={() => this.toPostContent()}
+            imageUrl={item._embedded['wp:featuredmedia'][0].source_url}
+            title={item.title.rendered}
+            date={item.date} />} />
     )
   }
 }
@@ -62,6 +89,7 @@ export class Feed extends Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    paddingTop: 12,
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#2c3e50'

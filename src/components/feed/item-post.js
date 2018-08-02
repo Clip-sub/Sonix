@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Colors, Metrics, dayjs } from 'sonix-common'
 import _ from 'lodash'
 
@@ -7,7 +7,8 @@ type ItemPostType = {
   title: string,
   subtitle: string,
   date: string,
-  imageUrl: string
+  imageUrl: string,
+  onPress: Function
 }
 
 class ItemPost extends Component<ItemPostType> {
@@ -17,17 +18,19 @@ class ItemPost extends Component<ItemPostType> {
   }
 
   render () {
-    const { title, subtitle, date, imageUrl } = this.props
+    const { title, subtitle, date, imageUrl, onPress } = this.props
 
     return (
-      <View style={styles.container}>
-        <Image style={styles.thumbnail} source={{ uri: imageUrl }} />
-        <View style={styles.titleWrapper}>
-          <Text style={styles.title} numberOfLines={2}>{_.escape(title)}</Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
-          <Text style={styles.date}>{dayjs(date).format('MMMM DD[,] YYYY')}</Text>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.container}>
+          <Image style={styles.thumbnail} source={{ uri: imageUrl }} />
+          <View style={styles.titleWrapper}>
+            <Text style={styles.title} numberOfLines={2}>{_.escape(title)}</Text>
+            <Text style={styles.subtitle}>{subtitle}</Text>
+            <Text style={styles.date}>{dayjs(date).format('MMMM DD[,] YYYY')}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
@@ -44,6 +47,7 @@ const styles = StyleSheet.create({
     maxWidth: Metrics.WINDOW_WIDTH * 0.42,
     color: Colors.GREYISH_BROWN,
     fontSize: 14,
+    height: 34,
     marginTop: 10,
     textAlign: 'left'
   },
