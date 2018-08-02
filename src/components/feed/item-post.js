@@ -13,7 +13,7 @@ type ItemPostType = {
 class ItemPost extends Component<ItemPostType> {
   static defaultProps = {
     title: 'Title',
-    subtitle: 'Subtitle'
+    subtitle: ''
   }
 
   render () {

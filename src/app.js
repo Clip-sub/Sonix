@@ -3,6 +3,7 @@
  * @flow
  */
 import { Navigation } from 'react-native-navigation'
+import { Colors } from 'sonix-common'
 import { registerTabs } from './tabs/_tab-registry'
 import { registerHeaders } from './components/header/_header-registry'
 
@@ -35,9 +36,9 @@ export function start (iconAssets) {
                   icon: iconAssets[0],
                   testID: 'FIRST_TAB_BAR_BUTTON',
                   iconColor: 'gray',
-                  selectedIconColor: '#d6ba12',
                   textColor: 'gray',
-                  selectedTextColor: '#d6ba12'
+                  selectedIconColor: Colors.ORANGE,
+                  selectedTextColor: Colors.ORANGE
                 }
               }
             }
@@ -52,7 +53,11 @@ export function start (iconAssets) {
                 bottomTab: {
                   text: 'Categories',
                   icon: iconAssets[1],
-                  testID: 'SECOND_TAB_BAR_BUTTON'
+                  testID: 'SECOND_TAB_BAR_BUTTON',
+                  iconColor: 'gray',
+                  textColor: 'gray',
+                  selectedIconColor: Colors.ORANGE,
+                  selectedTextColor: Colors.ORANGE
                 }
               }
             }
@@ -67,7 +72,11 @@ export function start (iconAssets) {
                 bottomTab: {
                   text: 'Comments',
                   icon: iconAssets[2],
-                  testID: 'SECOND_TAB_BAR_BUTTON'
+                  testID: 'SECOND_TAB_BAR_BUTTON',
+                  iconColor: 'gray',
+                  textColor: 'gray',
+                  selectedIconColor: Colors.ORANGE,
+                  selectedTextColor: Colors.ORANGE
                 }
               }
             }
