@@ -16,11 +16,11 @@ export function start (iconAssets) {
             component: {
               name: 'tab.Feed',
               passProps: {
-                text: 'This is tab 2'
+                text: ''
               },
               options: {
                 bottomTab: {
-                  text: 'Tab 2',
+                  text: 'Feed',
                   icon: iconAssets[0],
                   testID: 'SECOND_TAB_BAR_BUTTON'
                 }
@@ -31,11 +31,11 @@ export function start (iconAssets) {
             component: {
               name: 'tab.Categories',
               passProps: {
-                text: 'This is tab 2'
+                text: ''
               },
               options: {
                 bottomTab: {
-                  text: 'Tab 2',
+                  text: 'Categories',
                   icon: iconAssets[1],
                   testID: 'SECOND_TAB_BAR_BUTTON'
                 }
@@ -46,11 +46,11 @@ export function start (iconAssets) {
             component: {
               name: 'tab.Comments',
               passProps: {
-                text: 'This is tab 2'
+                text: ''
               },
               options: {
                 bottomTab: {
-                  text: 'Tab 2',
+                  text: 'Comments',
                   icon: iconAssets[2],
                   testID: 'SECOND_TAB_BAR_BUTTON'
                 }
