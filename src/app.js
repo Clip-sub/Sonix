@@ -33,8 +33,10 @@ export function start (iconAssets) {
           {
             bottomTabs: {
               id: 'mainBottomTabs',
-              animations: {
-                enable: true
+              options: {
+                bottomTabs: {
+                  titleDisplayMode: 'showWhenActive'
+                }
               },
               children: [
                 {
@@ -87,7 +89,6 @@ export function start (iconAssets) {
                       bottomTab: {
                         text: 'Comments',
                         icon: iconAssets[2],
-                        testID: 'SECOND_TAB_BAR_BUTTON',
                         iconColor: 'gray',
                         textColor: 'gray',
                         selectedIconColor: Colors.ORANGE,

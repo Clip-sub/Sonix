@@ -17,6 +17,10 @@ const NavigationHelper = {
 
   push: (componentId: string, layout) => {
     Navigation.push(componentId, layout)
+  },
+
+  mergeOptions: (componentId: string, options) => {
+    Navigation.mergeOptions(componentId, options)
   }
 }
 

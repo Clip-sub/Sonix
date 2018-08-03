@@ -8,16 +8,20 @@ export class Feed extends Component {
   static get options () {
     return {
       topBar: {
-        title: {
+        visible: false,
+        hideOnScroll: true,
+        drawBehind: false,
+        largeTitle: {
           text: 'Back Handler',
           color: 'black',
           fontSize: 16
         },
-        subtitle: {
-          text: 'fd'
-        },
         background: {
           color: Colors.ORANGE
+        },
+        backButton: {
+          icon: require('./test.png'),
+          visible: true
         }
       }
     }
@@ -32,6 +36,22 @@ export class Feed extends Component {
 
   componentDidMount () {
     this.loadData(this.page)
+    // NavigationHelper.mergeOptions(this.props.componentId, {
+    //   bottomTab: {
+    //     badge: '3',
+    //     title: {
+    //       text: 'Back Handler'
+    //     }
+    //   },
+    //   topBar: {
+    //     background: {
+    //       color: 'blue'
+    //     },
+    //     title: {
+    //       text: 'Back Handler'
+    //     }
+    //   }
+    // })
   }
 
   loadData (page: number) {
@@ -52,7 +72,7 @@ export class Feed extends Component {
   }
 
   toPostContent () {
-    NavigationHelper.push('mainBottomTabs', {
+    NavigationHelper.push(this.props.componentId, {
       component: {
         name: 'screen.PostContent',
         passProps: {

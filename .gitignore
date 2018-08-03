@@ -108,4 +108,8 @@ iOSInjectionProject/
 
 # Bundle artifact
 *.jsbundle
+
+# Extra
 .vscode/
+package-lock.json
+yarn.lock

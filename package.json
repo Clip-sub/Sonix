@@ -26,7 +26,7 @@
     "glamorous-native": "^1.4.0",
     "lodash": "^4.17.10",
     "querystringify": "^2.0.0",
-    "react": "16.4.1",
+    "react": "^16.4.2",
     "react-native": "0.56.0",
     "react-native-i18n": "^2.0.15",
     "react-native-navigation": "^2.0.2439",
@@ -45,7 +45,7 @@
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.0",
     "prop-types": "^15.6.2",
-    "react-test-renderer": "16.4.1",
+    "react-test-renderer": "^16.4.2",
     "snazzy": "^7.1.1",
     "standard": "^11.0.1"
   },
