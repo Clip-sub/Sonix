@@ -13,31 +13,32 @@ export function start (iconAssets) {
   registerHeaders()
   registerScreens()
 
+  Navigation.setDefaultOptions({
+    topBar: {
+      visible: false,
+      title: {
+        fontWeight: 'bold',
+        fontSize: 16
+      },
+      subtitle: {
+        fontSize: 4,
+        color: Colors.GREYISH_BROWN
+      }
+    }
+  })
+
   Navigation.setRoot({
     root: {
-      stack: {
+      bottomTabs: {
+        id: 'mainBottomTabs',
+        options: {
+          bottomTabs: {
+            titleDisplayMode: 'showWhenActive'
+          }
+        },
         children: [
-          // {
-          //   component: {
-          //     name: 'screen.PostContent',
-          //     options: {
-          //       topBar: {
-          //         visible: true,
-          //         title: {
-          //           text: 'Feedsdd'
-          //         }
-          //       }
-          //     }
-          //   }
-          // },
           {
-            bottomTabs: {
-              id: 'mainBottomTabs',
-              options: {
-                bottomTabs: {
-                  titleDisplayMode: 'showWhenActive'
-                }
-              },
+            stack: {
               children: [
                 {
                   component: {
@@ -50,54 +51,48 @@ export function start (iconAssets) {
                         textColor: 'gray',
                         selectedIconColor: Colors.ORANGE,
                         selectedTextColor: Colors.ORANGE
-                      },
-                      topBar: {
-                        visible: true,
-                        title: {
-                          text: 'Feed'
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  component: {
-                    name: 'tab.Categories',
-                    passProps: {
-                      text: ''
-                    },
-                    options: {
-                      bottomTab: {
-                        text: 'Categories',
-                        icon: iconAssets[1],
-                        testID: 'SECOND_TAB_BAR_BUTTON',
-                        iconColor: 'gray',
-                        textColor: 'gray',
-                        selectedIconColor: Colors.ORANGE,
-                        selectedTextColor: Colors.ORANGE
-                      }
-                    }
-                  }
-                },
-                {
-                  component: {
-                    name: 'tab.Comments',
-                    passProps: {
-                      text: ''
-                    },
-                    options: {
-                      bottomTab: {
-                        text: 'Comments',
-                        icon: iconAssets[2],
-                        iconColor: 'gray',
-                        textColor: 'gray',
-                        selectedIconColor: Colors.ORANGE,
-                        selectedTextColor: Colors.ORANGE
                       }
                     }
                   }
                 }
               ]
+            }
+          },
+          {
+            component: {
+              name: 'tab.Categories',
+              passProps: {
+                text: ''
+              },
+              options: {
+                bottomTab: {
+                  text: 'Categories',
+                  icon: iconAssets[1],
+                  testID: 'SECOND_TAB_BAR_BUTTON',
+                  iconColor: 'gray',
+                  textColor: 'gray',
+                  selectedIconColor: Colors.ORANGE,
+                  selectedTextColor: Colors.ORANGE
+                }
+              }
+            }
+          },
+          {
+            component: {
+              name: 'tab.Comments',
+              passProps: {
+                text: ''
+              },
+              options: {
+                bottomTab: {
+                  text: 'Comments',
+                  icon: iconAssets[2],
+                  iconColor: 'gray',
+                  textColor: 'gray',
+                  selectedIconColor: Colors.ORANGE,
+                  selectedTextColor: Colors.ORANGE
+                }
+              }
             }
           }
         ]

@@ -5,30 +5,23 @@ import { ItemPost } from '../components/feed/item-post'
 import { apiPost } from '../api/api-post'
 
 export class Feed extends Component {
-  static get options () {
-    return {
+  constructor (props) {
+    super(props)
+    NavigationHelper.mergeOptions(this.props.componentId, {
       topBar: {
-        visible: false,
-        hideOnScroll: true,
-        drawBehind: false,
-        largeTitle: {
-          text: 'Back Handler',
-          color: 'black',
-          fontSize: 16
-        },
+        visible: true,
         background: {
           color: Colors.ORANGE
         },
-        backButton: {
-          icon: require('./test.png'),
-          visible: true
+        title: {
+          text: 'Feed'
+        },
+        subtitle: {
+          text: 'Listing all latest music'
         }
       }
-    }
-  }
+    })
 
-  constructor (props) {
-    super(props)
     console.log(props)
     this.page = 1
     this.posts = []
@@ -36,22 +29,6 @@ export class Feed extends Component {
 
   componentDidMount () {
     this.loadData(this.page)
-    // NavigationHelper.mergeOptions(this.props.componentId, {
-    //   bottomTab: {
-    //     badge: '3',
-    //     title: {
-    //       text: 'Back Handler'
-    //     }
-    //   },
-    //   topBar: {
-    //     background: {
-    //       color: 'blue'
-    //     },
-    //     title: {
-    //       text: 'Back Handler'
-    //     }
-    //   }
-    // })
   }
 
   loadData (page: number) {
