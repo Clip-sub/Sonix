@@ -48,17 +48,17 @@ export class Feed extends Component {
       .catch(e => console.log(e))
   }
 
-  toPostContent () {
+  toPostContent (item) {
     NavigationHelper.push(this.props.componentId, {
       component: {
         name: 'screen.PostContent',
         passProps: {
-          text: 'Pushed screen'
+          postId: item.id
         },
         options: {
           topBar: {
             title: {
-              text: 'Pushed screen title'
+              text: item.title.rendered
             }
           }
         }
@@ -75,7 +75,7 @@ export class Feed extends Component {
         contentContainerStyle={styles.container}
         renderItem={({ item }) =>
           <ItemPost
-            onPress={() => this.toPostContent()}
+            onPress={() => this.toPostContent(item)}
             imageUrl={item._embedded['wp:featuredmedia'][0].source_url}
             title={item.title.rendered}
             date={item.date} />} />

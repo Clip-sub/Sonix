@@ -16,6 +16,7 @@ export function start (iconAssets) {
   Navigation.setDefaultOptions({
     topBar: {
       visible: false,
+      buttonColor: 'black',
       title: {
         fontWeight: 'bold',
         fontSize: 16
