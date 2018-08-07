@@ -34,7 +34,6 @@ export class Feed extends Component {
   loadData (page: number) {
     apiPost.getLatestPosts()
       .then(resp => {
-        console.log(resp)
         resp.length > 1 && this.posts++
 
         if (page === 1) {

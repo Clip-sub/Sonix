@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, WebView } from 'react-native'
 import { Colors, NavigationHelper } from 'sonix-common'
 import { apiPost } from '../api/api-post'
 
@@ -47,21 +47,25 @@ class PostContent extends Component {
     const { postId } = this.props
     apiPost.getSinglePost(postId)
       .then(resp => {
+        console.log(resp)
         if (resp.id) {
-          alert(this.state._embedded['wp:featuredmedia'][0].source_url)
           this.setState(resp)
         }
       }).catch(e => console.log(e))
   }
 
   render () {
-    const { id } = this.state
+    const { id, excerpt } = this.state
 
     return (
-      id ? (<View style={styles.container}>
-        <Image style={{ width: 50, height: 50 }} source={{ uri: this.state._embedded['wp:featuredmedia'][0].source_url }} />
-        <Text onPress={() => this.toReset()}>PostContent</Text>
-      </View>) : <Fragment />
+      id ? (
+        <View style={styles.container}>
+          <Image style={styles.thumbnail} source={{ uri: this.state._embedded['wp:featuredmedia'][0].source_url }} />
+          <Text onPress={() => this.toReset()}>PostContent</Text>
+
+          <WebView style={styles.webView} originWhitelist={['*']} source={{ html: excerpt.rendered }} />
+        </View>
+      ) : <Fragment />
     )
   }
 }
@@ -70,9 +74,17 @@ class PostContent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    paddingTop: 24,
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#2c3e50'
+    backgroundColor: Colors.WHITE
+  },
+  thumbnail: {
+    width: 220,
+    height: 220
+  },
+  webView: {
+    flex: 1, height: 10
   }
 })
 
