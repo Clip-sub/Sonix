@@ -28,6 +28,7 @@ const api = {
     const qsParams = qs.stringify({...params, _embed: true}, true)
 
     return fetch(baseUrl + endpoint + '/' + qsParams, options).then(result => {
+      console.log(result)
       return result.json()
     })
   },

@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { Component, Fragment } from 'react'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import { Colors, NavigationHelper } from 'sonix-common'
+import { apiPost } from '../api/api-post'
 
 // create a component
 class PostContent extends Component {
@@ -17,6 +18,8 @@ class PostContent extends Component {
       }
     }
   }
+
+  state = {}
 
   toReset () {
     NavigationHelper.showModal({
@@ -40,11 +43,25 @@ class PostContent extends Component {
     })
   }
 
+  componentDidMount () {
+    const { postId } = this.props
+    apiPost.getSinglePost(postId)
+      .then(resp => {
+        if (resp.id) {
+          alert(this.state._embedded['wp:featuredmedia'][0].source_url)
+          this.setState(resp)
+        }
+      }).catch(e => console.log(e))
+  }
+
   render () {
+    const { id } = this.state
+
     return (
-      <View style={styles.container}>
+      id ? (<View style={styles.container}>
+        <Image style={{ width: 50, height: 50 }} source={{ uri: this.state._embedded['wp:featuredmedia'][0].source_url }} />
         <Text onPress={() => this.toReset()}>PostContent</Text>
-      </View>
+      </View>) : <Fragment />
     )
   }
 }
