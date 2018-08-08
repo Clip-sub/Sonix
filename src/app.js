@@ -79,21 +79,27 @@ export function start (iconAssets) {
             }
           },
           {
-            component: {
-              name: 'tab.Comments',
-              passProps: {
-                text: ''
-              },
-              options: {
-                bottomTab: {
-                  text: 'Comments',
-                  icon: iconAssets[2],
-                  iconColor: 'gray',
-                  textColor: 'gray',
-                  selectedIconColor: Colors.ORANGE,
-                  selectedTextColor: Colors.ORANGE
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: 'tab.Comments',
+                    passProps: {
+                      text: ''
+                    },
+                    options: {
+                      bottomTab: {
+                        text: 'Comments',
+                        icon: iconAssets[2],
+                        iconColor: 'gray',
+                        textColor: 'gray',
+                        selectedIconColor: Colors.BLUE_FACEBOOK,
+                        selectedTextColor: Colors.BLUE_FACEBOOK
+                      }
+                    }
+                  }
                 }
-              }
+              ]
             }
           }
         ]

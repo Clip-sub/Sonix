@@ -14,11 +14,11 @@ type ItemCommentType = {
 
 export class ItemComment extends Component<ItemCommentType> {
   render () {
-    const { content, authorName, date, avatarUrl, onPress } = this.props
+    const { content, authorName, date, avatarUrl, onPress, odd } = this.props
 
     return (
       <TouchableOpacity onPress={onPress}>
-        <View style={styles.container}>
+        <View style={[styles.container, odd ? styles.odd : {}]}>
           <Image style={styles.avatar} source={{ uri: avatarUrl }} />
           <View style={styles.wrapper}>
             <Text style={styles.authorName} numberOfLines={2}>{_.escape(authorName)}</Text>
@@ -41,7 +41,11 @@ const styles = StyleSheet.create({
     maxWidth: Metrics.WINDOW_WIDTH,
     width: Metrics.WINDOW_WIDTH,
     backgroundColor: Colors.WHITE,
-    marginBottom: 12
+    paddingLeft: 12,
+    paddingBottom: 12
+  },
+  odd: {
+    backgroundColor: Colors.BLUE_ULTRALIGHT
   },
   wrapper: {
     marginLeft: 18,

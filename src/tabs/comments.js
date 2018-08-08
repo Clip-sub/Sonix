@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { StyleSheet, FlatList } from 'react-native'
+import React, { Component, Fragment } from 'react'
+import { StyleSheet, FlatList, StatusBar } from 'react-native'
 import { Colors, NavigationHelper } from 'sonix-common'
 import { ItemComment } from '../components/comments/item-comment'
 import { apiComment } from '../api/api-comment'
@@ -11,13 +11,15 @@ export class Comments extends Component {
       topBar: {
         visible: true,
         background: {
-          color: Colors.ORANGE
+          color: Colors.BLUE_FACEBOOK
         },
         title: {
-          text: 'Feed'
+          text: 'Comments',
+          color: Colors.WHITE
         },
         subtitle: {
-          text: 'Listing all latest music'
+          text: 'Find the latest comments',
+          color: Colors.GRAY_ULTRALIGHT
         }
       }
     })
@@ -49,11 +51,14 @@ export class Comments extends Component {
 
   render () {
     return (
-      <FlatList
-        data={this.data}
-        keyExtractor={item => String(Math.random())}
-        contentContainerStyle={styles.container}
-        renderItem={({ item }) => <ItemComment authorName={item.author_name} content={item.content.rendered} avatarUrl={item.author_avatar_urls['96']} />} />
+      <Fragment>
+        <StatusBar barStyle='light-content' />
+        <FlatList
+          data={this.data}
+          keyExtractor={item => String(Math.random())}
+          contentContainerStyle={styles.container}
+          renderItem={({ item, index }) => <ItemComment odd={index % 2 !== 0} authorName={item.author_name} content={item.content.rendered} avatarUrl={item.author_avatar_urls['96']} />} />
+      </Fragment>
     )
   }
 }

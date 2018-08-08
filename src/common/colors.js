@@ -5,6 +5,7 @@ const Colors = {
   GRAY_LIGHT: '#c3cad6',
   BLUE: '#4183c7',
   BLUE_LIGHT: '#6cd0f2',
+  BLUE_ULTRALIGHT: '#eff6ff',
   BLUE_FACEBOOK: '#465898',
   DEEP_BLUE: '#0c0033',
   GREYISH_BROWN: '#525252',

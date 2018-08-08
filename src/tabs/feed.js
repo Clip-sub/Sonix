@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { StyleSheet, FlatList } from 'react-native'
+import React, { Component, Fragment } from 'react'
+import { StyleSheet, FlatList, StatusBar } from 'react-native'
 import { Colors, NavigationHelper } from 'sonix-common'
 import { ItemPost } from '../components/feed/item-post'
 import { apiPost } from '../api/api-post'
@@ -67,17 +67,20 @@ export class Feed extends Component {
 
   render () {
     return (
-      <FlatList
-        data={this.posts}
-        numColumns={2}
-        keyExtractor={item => String(Math.random())}
-        contentContainerStyle={styles.container}
-        renderItem={({ item }) =>
-          <ItemPost
-            onPress={() => this.toPostContent(item)}
-            imageUrl={item._embedded['wp:featuredmedia'][0].source_url}
-            title={item.title.rendered}
-            date={item.date} />} />
+      <Fragment>
+        <StatusBar barStyle='dark-content' />
+        <FlatList
+          data={this.posts}
+          numColumns={2}
+          keyExtractor={item => String(Math.random())}
+          contentContainerStyle={styles.container}
+          renderItem={({ item }) =>
+            <ItemPost
+              onPress={() => this.toPostContent(item)}
+              imageUrl={item._embedded['wp:featuredmedia'][0].source_url}
+              title={item.title.rendered}
+              date={item.date} />} />
+      </Fragment>
     )
   }
 }
