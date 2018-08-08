@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.10.0, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -151,7 +162,8 @@ configurations.all {
 }
 
 dependencies {
-    compile project(':react-native-i18n')
+    implementation project(':react-native-onesignal')
+    implementation project(':react-native-i18n')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-navigation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
