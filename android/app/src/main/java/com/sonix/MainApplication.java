@@ -29,7 +29,6 @@ public class MainApplication extends NavigationApplication {
       new MainReactPackage(),
       new ReactNativeOneSignalPackage(),
       new RNI18nPackage(),
-      new ReactNativeI18n(),
       new VectorIconsPackage()
     );
   }

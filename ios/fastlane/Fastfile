@@ -16,8 +16,12 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+  desc "Build an ad-hoc release and upload to Diawi"
+  lane :di do
+    build_app(scheme: "Sonix", export_method: "ad-hoc")
+    diawi(
+      token: "N7q2nbLmDv20V4LtUeQhsN3vnJl7rwKkpKlnifmKoS",
+      file: "./Sonix.ipa"
+    )
   end
 end

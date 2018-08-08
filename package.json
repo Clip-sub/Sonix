@@ -10,6 +10,7 @@
     "checkdeps": "ncu --packageFile package.json",
     "i5s": "react-native run-ios --simulator=\"iPhone 5s\"",
     "i6": "react-native run-ios --simulator=\"iPhone 6\"",
+    "diawi": "cd ios && fastlane di && cd ..",
     "a": "react-native run-android",
     "ar": "react-native run-android --variant=\"release\"",
     "fixcode": "standard --fix",

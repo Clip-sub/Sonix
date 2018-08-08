@@ -4,25 +4,28 @@
  */
 import { Navigation } from 'react-native-navigation'
 import { Colors } from 'sonix-common'
+import OneSignal from 'react-native-onesignal'
 import { registerTabs } from './tabs/_tab-registry'
 import { registerHeaders } from './components/header/_header-registry'
 import { registerScreens } from './screens/_screen-registry'
 
 export function start (iconAssets) {
+  OneSignal.init('f08264b2-3b73-4111-9c1a-b9199d3ce1cc')
+
   registerTabs()
   registerHeaders()
   registerScreens()
 
   Navigation.setDefaultOptions({
     topBar: {
-      visible: false,
+      visible: true,
       buttonColor: 'black',
       title: {
         fontWeight: 'bold',
         fontSize: 16
       },
       subtitle: {
-        fontSize: 4,
+        fontSize: 12,
         color: Colors.GREYISH_BROWN
       }
     }
