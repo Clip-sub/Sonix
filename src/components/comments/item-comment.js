@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Colors, Metrics, dayjs } from 'sonix-common'
 import _ from 'lodash'
+import { refineContent } from '../../common/utils'
 
 type ItemCommentType = {
   content: string,
@@ -19,9 +20,9 @@ export class ItemComment extends Component<ItemCommentType> {
       <TouchableOpacity onPress={onPress}>
         <View style={styles.container}>
           <Image style={styles.avatar} source={{ uri: avatarUrl }} />
-          <View style={styles.titleWrapper}>
+          <View style={styles.wrapper}>
             <Text style={styles.authorName} numberOfLines={2}>{_.escape(authorName)}</Text>
-            <Text style={styles.content}>{content}</Text>
+            <Text style={styles.content}>{refineContent(content)}</Text>
             <Text style={styles.date}>{dayjs(date).format('MMMM DD[,] YYYY')}</Text>
           </View>
         </View>
@@ -30,15 +31,21 @@ export class ItemComment extends Component<ItemCommentType> {
   }
 }
 
+const AVATAR_SIZE = 50
+
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    maxWidth: Metrics.WINDOW_WIDTH,
+    width: Metrics.WINDOW_WIDTH,
     backgroundColor: Colors.WHITE,
-    borderWidth: 1,
-    borderColor: Colors.SILVER,
-    marginBottom: 12,
-    marginHorizontal: 6
+    marginBottom: 12
+  },
+  wrapper: {
+    marginLeft: 18,
+    maxWidth: Metrics.WINDOW_WIDTH * 0.75
   },
   authorName: {
     maxWidth: Metrics.WINDOW_WIDTH * 0.42,
@@ -58,8 +65,8 @@ const styles = StyleSheet.create({
     color: Colors.SILVER
   },
   avatar: {
-    maxWidth: Metrics.WINDOW_WIDTH * 0.45,
-    width: Metrics.WINDOW_WIDTH * 0.45,
-    height: Metrics.WINDOW_WIDTH * 0.45
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
+    borderRadius: AVATAR_SIZE / 2
   }
 })
