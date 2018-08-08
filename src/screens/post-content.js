@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { StyleSheet, Image, WebView, ScrollView, TouchableOpacity, Linking } from 'react-native'
-import { Colors, NavigationHelper, Metrics } from 'sonix-common'
+import { Colors, Metrics } from 'sonix-common'
 import { apiPost } from '../api/api-post'
 import { Icon } from '../components/common/icon'
 
@@ -12,37 +12,12 @@ class PostContent extends Component {
         visible: true,
         background: {
           color: Colors.ORANGE
-        },
-        title: {
-          text: 'dddf'
         }
       }
     }
   }
 
   state = {}
-
-  toReset () {
-    NavigationHelper.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'screen.PostContent',
-            passProps: {
-              text: 'stack with one child'
-            },
-            options: {
-              topBar: {
-                title: {
-                  text: 'Modal'
-                }
-              }
-            }
-          }
-        }]
-      }
-    })
-  }
 
   openInBrowser (link) {
     Linking.openURL(link || '')

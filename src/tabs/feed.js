@@ -34,7 +34,7 @@ export class Feed extends Component {
   loadData (page: number) {
     apiPost.getLatestPosts()
       .then(resp => {
-        resp.length > 1 && this.posts++
+        resp.length > 1 && this.page++
 
         if (page === 1) {
           this.posts = resp
