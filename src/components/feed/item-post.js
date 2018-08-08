@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.WHITE,
+    borderWidth: 1,
+    borderColor: Colors.SILVER,
     marginBottom: 12,
     marginHorizontal: 6
   },

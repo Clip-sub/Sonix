@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text, StyleSheet, Image, WebView } from 'react-native'
-import { Colors, NavigationHelper } from 'sonix-common'
+import { StyleSheet, Image, WebView, ScrollView, TouchableOpacity, Linking } from 'react-native'
+import { Colors, NavigationHelper, Metrics } from 'sonix-common'
 import { apiPost } from '../api/api-post'
+import { Icon } from '../components/common/icon'
 
 // create a component
 class PostContent extends Component {
@@ -43,6 +44,10 @@ class PostContent extends Component {
     })
   }
 
+  openInBrowser (link) {
+    Linking.openURL(link || '')
+  }
+
   componentDidMount () {
     const { postId } = this.props
     apiPost.getSinglePost(postId)
@@ -55,16 +60,19 @@ class PostContent extends Component {
   }
 
   render () {
-    const { id, excerpt } = this.state
+    const { id, excerpt, link } = this.state
 
     return (
       id ? (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
           <Image style={styles.thumbnail} source={{ uri: this.state._embedded['wp:featuredmedia'][0].source_url }} />
-          <Text onPress={() => this.toReset()}>PostContent</Text>
 
           <WebView style={styles.webView} originWhitelist={['*']} source={{ html: excerpt.rendered }} />
-        </View>
+
+          <TouchableOpacity style={styles.bottomButton} onPress={() => this.openInBrowser(link)}>
+            <Icon color={Colors.WHITE} size={24} name='open-in-browser' />
+          </TouchableOpacity>
+        </ScrollView>
       ) : <Fragment />
     )
   }
@@ -75,6 +83,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 24,
+    paddingBottom: 56,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: Colors.WHITE
@@ -84,7 +93,18 @@ const styles = StyleSheet.create({
     height: 220
   },
   webView: {
-    flex: 1, height: 10
+    flex: 1,
+    width: Metrics.WINDOW_WIDTH * 0.96,
+    marginTop: 24,
+    backgroundColor: Colors.WHITE
+  },
+  bottomButton: {
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+    paddingVertical: 12,
+    width: Metrics.WINDOW_WIDTH,
+    backgroundColor: Colors.RED
   }
 })
 
