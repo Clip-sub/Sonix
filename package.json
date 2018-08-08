@@ -30,6 +30,7 @@
     "react-native": "0.56.0",
     "react-native-i18n": "^2.0.15",
     "react-native-navigation": "^2.0.2439",
+    "react-native-onesignal": "^3.2.6",
     "react-native-vector-icons": "^5.0.0"
   },
   "devDependencies": {

@@ -60,25 +60,6 @@ export function start (iconAssets) {
             }
           },
           {
-            component: {
-              name: 'tab.Categories',
-              passProps: {
-                text: ''
-              },
-              options: {
-                bottomTab: {
-                  text: 'Categories',
-                  icon: iconAssets[1],
-                  testID: 'SECOND_TAB_BAR_BUTTON',
-                  iconColor: 'gray',
-                  textColor: 'gray',
-                  selectedIconColor: Colors.ORANGE,
-                  selectedTextColor: Colors.ORANGE
-                }
-              }
-            }
-          },
-          {
             stack: {
               children: [
                 {
@@ -95,6 +76,28 @@ export function start (iconAssets) {
                         textColor: 'gray',
                         selectedIconColor: Colors.BLUE_FACEBOOK,
                         selectedTextColor: Colors.BLUE_FACEBOOK
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            stack: {
+              children: [
+                {
+                  component: {
+                    name: 'tab.Settings',
+                    passProps: {},
+                    options: {
+                      bottomTab: {
+                        text: 'Settings',
+                        icon: iconAssets[5],
+                        iconColor: 'gray',
+                        textColor: 'gray',
+                        selectedIconColor: Colors.RED,
+                        selectedTextColor: Colors.RED
                       }
                     }
                   }

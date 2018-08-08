@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { StyleSheet, Image, WebView, ScrollView, TouchableOpacity, Linking } from 'react-native'
+import { StyleSheet, View, Image, WebView, Text, ScrollView, TouchableOpacity, Linking } from 'react-native'
 import { Colors, Metrics } from 'sonix-common'
 import { apiPost } from '../api/api-post'
 import { Icon } from '../components/common/icon'
@@ -45,7 +45,10 @@ class PostContent extends Component {
           <WebView style={styles.webView} originWhitelist={['*']} source={{ html: excerpt.rendered }} />
 
           <TouchableOpacity style={styles.bottomButton} onPress={() => this.openInBrowser(link)}>
-            <Icon color={Colors.WHITE} size={24} name='open-in-browser' />
+            <View style={styles.bottomWrapper}>
+              <Icon color={Colors.WHITE} size={24} name='open-in-browser' />
+              <Text style={styles.bottomText}>Open in browser</Text>
+            </View>
           </TouchableOpacity>
         </ScrollView>
       ) : <Fragment />
@@ -80,6 +83,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     width: Metrics.WINDOW_WIDTH,
     backgroundColor: Colors.RED
+  },
+  bottomWrapper: {
+    flexDirection: 'row', alignItems: 'center'
+  },
+  bottomText: {
+    color: Colors.WHITE, marginLeft: 12
   }
 })
 

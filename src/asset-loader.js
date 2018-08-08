@@ -10,7 +10,8 @@ export function loadIconAssets () {
       MaterialCommunityIcons.getImageSource('library', TAB_ICON_SIZE),
       MaterialCommunityIcons.getImageSource('comment-text-multiple-outline', TAB_ICON_SIZE),
       Ionicons.getImageSource('ios-notifications', TAB_ICON_SIZE),
-      Ionicons.getImageSource('ios-person', TAB_ICON_SIZE)
+      Ionicons.getImageSource('ios-person', TAB_ICON_SIZE),
+      Ionicons.getImageSource('ios-cog', TAB_ICON_SIZE)
     ])
       .then(values => {
         resolve(values)
